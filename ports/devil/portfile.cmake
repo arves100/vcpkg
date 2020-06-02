@@ -34,9 +34,9 @@ if("openexr" IN_LIST FEATURES)
 endif()
 
 set(IL_NO_JP2 1)
-if("jasper" IN_LIST FEATURES)
-    set(IL_NO_JP2 0)
-endif()
+#if("jasper" IN_LIST FEATURES)
+#    set(IL_NO_JP2 0)
+#endif()
 
 set(IL_NO_MNG 1)
 #if("libmng" IN_LIST FEATURES)
