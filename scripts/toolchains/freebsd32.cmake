@@ -3,3 +3,11 @@ set(CMAKE_SYSTEM_VERSION 11)
 set(CMAKE_SYSTEM_PROCESSOR "i686")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32" CACHE STRING "c++ flags")
 set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -m32" CACHE STRING "c flags")
+
+execute_process(COMMAND gcc -dumpfullversion OUTPUT_VARIABLE GCC_VERSION)
+string(FIND ${GCC_VERSION} . POSIT)
+string(SUBSTRING ${GCC_VERSION} 0 ${POSIT} GCC_MAJOR)
+
+set(CMAKE_EXE_LINKER_FLAGS "-L/usr/local/lib32/gcc${GCC_MAJOR} -Wl,-rpath=/usr/local/lib32/gcc${GCC_MAJOR}")
+set(CMAKE_C_COMPILER gcc)
+set(CMAKE_CXX_COMPILER g++)
