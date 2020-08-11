@@ -1,5 +1,3 @@
-#include "pch.h"
-
 #include <vcpkg/commands.fetch.h>
 
 namespace vcpkg::Commands::Fetch
@@ -20,5 +18,10 @@ namespace vcpkg::Commands::Fetch
         const fs::path tool_path = paths.get_tool_exe(tool);
         System::print2(tool_path.u8string(), '\n');
         Checks::exit_success(VCPKG_LINE_INFO);
+    }
+
+    void FetchCommand::perform_and_exit(const VcpkgCmdArguments& args, const VcpkgPaths& paths) const
+    {
+        Fetch::perform_and_exit(args, paths);
     }
 }
